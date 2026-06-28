@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.hammerhall</groupId>
-    <artifactId>project-stream-forge-mold</artifactId>
+    <artifactId>project-forge-mold</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
