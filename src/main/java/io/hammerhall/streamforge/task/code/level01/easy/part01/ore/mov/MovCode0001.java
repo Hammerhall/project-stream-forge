@@ -1,4 +1,4 @@
-package io.hammerhall.streamforge.task.code.level01.easy.part01.ore;
+package io.hammerhall.streamforge.task.code.level01.easy.part01.ore.mov;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
