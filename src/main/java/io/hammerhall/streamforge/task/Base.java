@@ -1,5 +1,14 @@
 package io.hammerhall.streamforge.task;
 
+import io.hammerhall.streamforge.domain.air.Airplane;
+import io.hammerhall.streamforge.domain.air.Airport;
+import io.hammerhall.streamforge.domain.air.BoardingPass;
+import io.hammerhall.streamforge.domain.air.Booking;
+import io.hammerhall.streamforge.domain.air.Flight;
+import io.hammerhall.streamforge.domain.air.Route;
+import io.hammerhall.streamforge.domain.air.Seat;
+import io.hammerhall.streamforge.domain.air.Segment;
+import io.hammerhall.streamforge.domain.air.Ticket;
 import io.hammerhall.streamforge.domain.movie.Actor;
 import io.hammerhall.streamforge.domain.movie.Director;
 import io.hammerhall.streamforge.domain.movie.DirectorGenre;
@@ -9,13 +18,17 @@ import io.hammerhall.streamforge.domain.movie.Role;
 import io.hammerhall.streamforge.domain.world.City;
 import io.hammerhall.streamforge.domain.world.Country;
 import io.hammerhall.streamforge.domain.world.CountryLanguage;
+import io.hammerhall.streamforge.repository.AirRepository;
 import io.hammerhall.streamforge.repository.MovieRepository;
 import io.hammerhall.streamforge.repository.WorldRepository;
+import io.hammerhall.streamforge.service.AirService;
+import io.hammerhall.streamforge.service.AirServiceImpl;
 import io.hammerhall.streamforge.service.MovieService;
 import io.hammerhall.streamforge.service.MovieServiceImpl;
 import io.hammerhall.streamforge.service.WorldService;
 import io.hammerhall.streamforge.service.WorldServiceImpl;
 import java.util.Collection;
+import java.util.stream.Stream;
 
 /**
  * Общий предок задач: даёт доступ к данным курса.
@@ -57,6 +70,17 @@ public abstract class Base {
                 new WorldServiceImpl(new WorldRepository());
     }
 
+    /**
+     * Держатель данных «Авиаперевозки» — третий, по той же причине: задача про фильмы не платит
+     * за авиа. Данные авиа не лежат в кузнице: при первом обращении к таблице её файл скачивается
+     * из выпуска {@code hammerhall-data} в {@code ~/.hammerhall/data/} и дальше берётся с диска
+     * (см. {@link AirRepository}).
+     */
+    private static final class AirHolder {
+        private static final AirService SERVICE =
+                new AirServiceImpl(new AirRepository());
+    }
+
     protected Collection<Movie> movies() {
         return MovieHolder.SERVICE.findAllMovies();
     }
@@ -91,5 +115,49 @@ public abstract class Base {
 
     protected Collection<CountryLanguage> languages() {
         return WorldHolder.SERVICE.findAllLanguages();
+    }
+
+    // ---------------------------------------------------------------- авиаперевозки
+
+    // Малые таблицы — коллекциями: читаются один раз и держатся в памяти.
+
+    protected Collection<Airport> airports() {
+        return AirHolder.SERVICE.findAllAirports();
+    }
+
+    protected Collection<Airplane> airplanes() {
+        return AirHolder.SERVICE.findAllAirplanes();
+    }
+
+    protected Collection<Seat> seats() {
+        return AirHolder.SERVICE.findAllSeats();
+    }
+
+    protected Collection<Route> routes() {
+        return AirHolder.SERVICE.findAllRoutes();
+    }
+
+    protected Collection<Flight> flights() {
+        return AirHolder.SERVICE.findAllFlights();
+    }
+
+    // Большие таблицы — потоками: десятки миллионов строк в память не помещаются, поэтому
+    // каждый вызов читает файл заново, строка за строкой. Поток одноразовый — нужен второй
+    // проход, зови метод ещё раз. Бросаешь поток на полпути — закрой его: try (var s = …) { … }.
+
+    protected Stream<Booking> bookings() {
+        return AirHolder.SERVICE.streamBookings();
+    }
+
+    protected Stream<Ticket> tickets() {
+        return AirHolder.SERVICE.streamTickets();
+    }
+
+    protected Stream<Segment> segments() {
+        return AirHolder.SERVICE.streamSegments();
+    }
+
+    protected Stream<BoardingPass> boardingPasses() {
+        return AirHolder.SERVICE.streamBoardingPasses();
     }
 }
