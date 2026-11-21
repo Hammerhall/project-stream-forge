@@ -6,8 +6,11 @@ import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.List;
 import lombok.NonNull;
-import org.junit.jupiter.api.Test;
 
+/**
+ * Проверить решение: {@code ./hammerhall submit MovMind0022}. Посмотреть результат на открытых данных — добавьте
+ * {@code void main()} и вызовите {@code task(…)}; данные даёт {@code Base} (здесь — {@code movies()}).
+ */
 @Title("Юбилейный вечер киноклуба")
 public class MovMind0022 extends Base {
 
@@ -33,16 +36,5 @@ public class MovMind0022 extends Base {
      */
     public List<Movie> task(@NonNull Collection<Movie> movies, int limit) {
         throw new UnsupportedOperationException("Реализуйте метод");
-    }
-
-    @Test
-    void runTask() {
-        IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit MovMind0022");
-
-        Collection<Movie> movies = movies();
-
-        int limit = 3;
-
-        task(movies, limit).stream().limit(20).forEach(IO::println);
     }
 }

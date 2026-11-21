@@ -7,8 +7,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.TreeMap;
 import lombok.NonNull;
-import org.junit.jupiter.api.Test;
 
+/**
+ * Проверить решение: {@code ./hammerhall submit MovCode0029}. Посмотреть результат на открытых данных — добавьте
+ * {@code void main()} и вызовите {@code task(…)}; данные даёт {@code Base} (здесь — {@code movies()}).
+ */
 @Title("Подшивка киножурнала")
 public class MovCode0029 extends Base {
 
@@ -25,16 +28,5 @@ public class MovCode0029 extends Base {
      */
     public TreeMap<Integer, List<String>> task(@NonNull Collection<Movie> movies) {
         throw new UnsupportedOperationException("Реализуйте метод");
-    }
-
-    @Test
-    void runTask() {
-        IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit MovCode0029");
-
-        Collection<Movie> movies = movies();
-
-        task(movies).entrySet().stream()
-                .limit(20)
-                .forEach(entry -> IO.println(entry.getKey() + " — " + entry.getValue().size()));
     }
 }

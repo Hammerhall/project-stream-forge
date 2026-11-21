@@ -6,8 +6,11 @@ import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.NoSuchElementException;
 import lombok.NonNull;
-import org.junit.jupiter.api.Test;
 
+/**
+ * Проверить решение: {@code ./hammerhall submit MovMind0027}. Посмотреть результат на открытых данных — добавьте
+ * {@code void main()} и вызовите {@code task(…)}; данные даёт {@code Base} (здесь — {@code movies()}).
+ */
 @Title("Чествование мастера")
 public class MovMind0027 extends Base {
 
@@ -49,14 +52,5 @@ public class MovMind0027 extends Base {
             return "Режиссёр: %s | Количество фильмов: %d | Первый год: %d | Последний год: %d"
                     .formatted(directorName, movieCount, firstYear, lastYear);
         }
-    }
-
-    @Test
-    void runTask() {
-        IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit MovMind0027");
-
-        Collection<Movie> movies = movies();
-
-        IO.println(task(movies));
     }
 }

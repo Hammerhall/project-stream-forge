@@ -6,8 +6,11 @@ import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.NoSuchElementException;
 import lombok.NonNull;
-import org.junit.jupiter.api.Test;
 
+/**
+ * Проверить решение: {@code ./hammerhall submit MovCode0031}. Посмотреть результат на открытых данных — добавьте
+ * {@code void main()} и вызовите {@code task(…)}; данные даёт {@code Base} (здесь — {@code movies()}).
+ */
 @Title("Спор старых киноманов")
 public class MovCode0031 extends Base {
 
@@ -40,14 +43,5 @@ public class MovCode0031 extends Base {
         public String toString() {
             return "Год: %d | Количество фильмов: %d".formatted(year, movieCount);
         }
-    }
-
-    @Test
-    void runTask() {
-        IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit MovCode0031");
-
-        Collection<Movie> movies = movies();
-
-        IO.println(task(movies));
     }
 }
