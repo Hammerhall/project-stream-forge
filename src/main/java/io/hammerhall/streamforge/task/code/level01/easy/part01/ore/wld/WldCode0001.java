@@ -6,7 +6,6 @@ import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.List;
 import lombok.NonNull;
-import org.junit.jupiter.api.Test;
 
 @Title("Заседание в Женеве")
 public class WldCode0001 extends Base {
@@ -25,13 +24,9 @@ public class WldCode0001 extends Base {
         throw new UnsupportedOperationException("Реализуйте метод");
     }
 
-    @Test
-    void runTask() {
+    void main() {
         IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit WldCode0001");
-
-        Collection<Country> countries = countries();
-
-        task(countries).forEach(country ->
+        task(countries()).forEach(country ->
                 IO.println("%s — %d".formatted(country.getName(), country.getPopulation())));
     }
 }

@@ -6,7 +6,6 @@ import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.Set;
 import lombok.NonNull;
-import org.junit.jupiter.api.Test;
 
 @Title("Атлас для первоклассника")
 public class WldCode0002 extends Base {
@@ -24,12 +23,8 @@ public class WldCode0002 extends Base {
         throw new UnsupportedOperationException("Реализуйте метод");
     }
 
-    @Test
-    void runTask() {
+    void main() {
         IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit WldCode0002");
-
-        Collection<Country> countries = countries();
-
-        task(countries).stream().limit(20).forEach(IO::println);
+        task(countries()).stream().limit(20).forEach(IO::println);
     }
 }

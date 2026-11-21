@@ -6,7 +6,6 @@ import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.List;
 import lombok.NonNull;
-import org.junit.jupiter.api.Test;
 
 @Title("Программка для зрителей")
 public class MovCode0001 extends Base {
@@ -25,12 +24,8 @@ public class MovCode0001 extends Base {
         throw new UnsupportedOperationException("Реализуйте метод");
     }
 
-    @Test
-    void runTask() {
+    void main() {
         IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit MovCode0001");
-
-        Collection<Movie> movies = movies();
-
-        task(movies).stream().limit(20).forEach(IO::println);
+        task(movies()).stream().limit(20).forEach(IO::println);
     }
 }

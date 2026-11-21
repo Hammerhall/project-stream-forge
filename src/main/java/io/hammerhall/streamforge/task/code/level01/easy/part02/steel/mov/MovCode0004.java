@@ -5,7 +5,6 @@ import io.hammerhall.streamforge.task.Base;
 import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import lombok.NonNull;
-import org.junit.jupiter.api.Test;
 
 @Title("Календарь киномеханика")
 public class MovCode0004 extends Base {
@@ -24,12 +23,8 @@ public class MovCode0004 extends Base {
         throw new UnsupportedOperationException("Реализуйте метод");
     }
 
-    @Test
-    void runTask() {
+    void main() {
         IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit MovCode0004");
-
-        Collection<Movie> movies = movies();
-
-        IO.println(task(movies));
+        IO.println(task(movies()));
     }
 }

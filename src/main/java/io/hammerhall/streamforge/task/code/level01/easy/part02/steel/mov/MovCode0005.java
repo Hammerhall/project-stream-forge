@@ -6,7 +6,6 @@ import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.Optional;
 import lombok.NonNull;
-import org.junit.jupiter.api.Test;
 
 @Title("Долгожданная премьера")
 public class MovCode0005 extends Base {
@@ -27,16 +26,8 @@ public class MovCode0005 extends Base {
         throw new UnsupportedOperationException("Реализуйте метод");
     }
 
-    @Test
-    void runTask() {
+    void main() {
         IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit MovCode0005");
-
-        Collection<Movie> movies = movies();
-
-        int targetYear = 2000;
-
-        Optional<Movie> firstMovieAfterYear = task(movies, targetYear);
-
-        firstMovieAfterYear.ifPresentOrElse(IO::println, () -> IO.println("Фильм не найден"));
+        task(movies(), 2000).ifPresentOrElse(IO::println, () -> IO.println("Фильм не найден"));
     }
 }
