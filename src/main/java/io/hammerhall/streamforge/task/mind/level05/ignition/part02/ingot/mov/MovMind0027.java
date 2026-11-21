@@ -46,11 +46,5 @@ public class MovMind0027 extends Base {
      * @param lastYear     самый поздний год выхода фильма
      */
     public record DirectorActivitySummary(String directorName, long movieCount, int firstYear, int lastYear) {
-
-        @Override
-        public String toString() {
-            return "Режиссёр: %s | Количество фильмов: %d | Первый год: %d | Последний год: %d"
-                    .formatted(directorName, movieCount, firstYear, lastYear);
-        }
     }
 }

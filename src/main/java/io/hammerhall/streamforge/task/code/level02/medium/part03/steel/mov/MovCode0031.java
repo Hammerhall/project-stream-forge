@@ -38,10 +38,5 @@ public class MovCode0031 extends Base {
      * @param movieCount количество фильмов за этот год
      */
     public record YearMovieCount(int year, long movieCount) {
-
-        @Override
-        public String toString() {
-            return "Год: %d | Количество фильмов: %d".formatted(year, movieCount);
-        }
     }
 }
