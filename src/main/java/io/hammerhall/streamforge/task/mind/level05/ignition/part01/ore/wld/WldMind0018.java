@@ -1,11 +1,11 @@
 package io.hammerhall.streamforge.task.mind.level05.ignition.part01.ore.wld;
 
 import io.hammerhall.streamforge.task.Base;
+import io.hammerhall.streamforge.task.Title;
 import java.util.List;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Записки демографа")
+@Title("Записки демографа")
 public class WldMind0018 extends Base {
 
     /**

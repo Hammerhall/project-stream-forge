@@ -2,13 +2,13 @@ package io.hammerhall.streamforge.task.code.level02.medium.part01.ore.mov;
 
 import io.hammerhall.streamforge.domain.movie.Movie;
 import io.hammerhall.streamforge.task.Base;
+import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.List;
 import lombok.NonNull;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Афиша на стене фойе")
+@Title("Афиша на стене фойе")
 public class MovCode0010 extends Base {
 
     /**

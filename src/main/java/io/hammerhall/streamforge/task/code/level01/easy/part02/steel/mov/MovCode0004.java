@@ -2,12 +2,12 @@ package io.hammerhall.streamforge.task.code.level01.easy.part02.steel.mov;
 
 import io.hammerhall.streamforge.domain.movie.Movie;
 import io.hammerhall.streamforge.task.Base;
+import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import lombok.NonNull;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Календарь киномеханика")
+@Title("Календарь киномеханика")
 public class MovCode0004 extends Base {
 
     /**

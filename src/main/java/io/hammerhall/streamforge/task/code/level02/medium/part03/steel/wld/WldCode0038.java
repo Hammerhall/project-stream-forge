@@ -2,14 +2,14 @@ package io.hammerhall.streamforge.task.code.level02.medium.part03.steel.wld;
 
 import io.hammerhall.streamforge.domain.world.Country;
 import io.hammerhall.streamforge.task.Base;
+import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import lombok.NonNull;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Региональные саммиты")
+@Title("Региональные саммиты")
 public class WldCode0038 extends Base {
 
     /**

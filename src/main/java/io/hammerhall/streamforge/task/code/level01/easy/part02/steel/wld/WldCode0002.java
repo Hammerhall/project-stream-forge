@@ -2,13 +2,13 @@ package io.hammerhall.streamforge.task.code.level01.easy.part02.steel.wld;
 
 import io.hammerhall.streamforge.domain.world.Country;
 import io.hammerhall.streamforge.task.Base;
+import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.Set;
 import lombok.NonNull;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Атлас для первоклассника")
+@Title("Атлас для первоклассника")
 public class WldCode0002 extends Base {
 
     /**

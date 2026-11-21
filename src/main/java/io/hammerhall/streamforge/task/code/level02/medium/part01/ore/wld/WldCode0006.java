@@ -2,13 +2,13 @@ package io.hammerhall.streamforge.task.code.level02.medium.part01.ore.wld;
 
 import io.hammerhall.streamforge.domain.world.Country;
 import io.hammerhall.streamforge.task.Base;
+import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.Optional;
 import lombok.NonNull;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Спор у глобуса")
+@Title("Спор у глобуса")
 public class WldCode0006 extends Base {
 
     /**

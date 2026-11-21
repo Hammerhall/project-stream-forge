@@ -2,13 +2,13 @@ package io.hammerhall.streamforge.task.code.level02.medium.part02.anvil.wld;
 
 import io.hammerhall.streamforge.domain.world.Country;
 import io.hammerhall.streamforge.task.Base;
+import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.List;
 import lombok.NonNull;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Анкета визового центра")
+@Title("Анкета визового центра")
 public class WldCode0012 extends Base {
 
     /**

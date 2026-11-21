@@ -2,13 +2,13 @@ package io.hammerhall.streamforge.task.mind.level04.collapse.part02.ingot.mov;
 
 import io.hammerhall.streamforge.domain.movie.Movie;
 import io.hammerhall.streamforge.task.Base;
+import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.List;
 import lombok.NonNull;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Вечер в провинциальном театре")
+@Title("Вечер в провинциальном театре")
 public class MovMind0006 extends Base {
 
     /**

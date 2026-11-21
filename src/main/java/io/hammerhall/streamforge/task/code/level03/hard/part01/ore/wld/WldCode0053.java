@@ -3,13 +3,13 @@ package io.hammerhall.streamforge.task.code.level03.hard.part01.ore.wld;
 import io.hammerhall.streamforge.domain.world.City;
 import io.hammerhall.streamforge.domain.world.Country;
 import io.hammerhall.streamforge.task.Base;
+import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.Map;
 import lombok.NonNull;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Открытки туриста")
+@Title("Открытки туриста")
 public class WldCode0053 extends Base {
 
     /**

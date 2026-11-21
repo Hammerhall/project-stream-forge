@@ -2,13 +2,13 @@ package io.hammerhall.streamforge.task.mind.level05.ignition.part02.ingot.wld;
 
 import io.hammerhall.streamforge.domain.world.Country;
 import io.hammerhall.streamforge.task.Base;
+import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.NoSuchElementException;
 import lombok.NonNull;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Экспедиция картографа")
+@Title("Экспедиция картографа")
 public class WldMind0022 extends Base {
 
     /**

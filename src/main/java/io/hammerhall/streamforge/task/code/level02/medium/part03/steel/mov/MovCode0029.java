@@ -2,14 +2,14 @@ package io.hammerhall.streamforge.task.code.level02.medium.part03.steel.mov;
 
 import io.hammerhall.streamforge.domain.movie.Movie;
 import io.hammerhall.streamforge.task.Base;
+import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.List;
 import java.util.TreeMap;
 import lombok.NonNull;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Подшивка киножурнала")
+@Title("Подшивка киножурнала")
 public class MovCode0029 extends Base {
 
     /**
