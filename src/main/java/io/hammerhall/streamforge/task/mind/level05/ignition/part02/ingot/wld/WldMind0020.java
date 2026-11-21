@@ -6,8 +6,11 @@ import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.List;
 import lombok.NonNull;
-import org.junit.jupiter.api.Test;
 
+/**
+ * Проверить решение: {@code ./hammerhall submit WldMind0020}. Посмотреть результат на открытых данных — добавьте
+ * {@code void main()} и вызовите {@code task(…)}; данные даёт {@code Base} (здесь — {@code countries()}).
+ */
 @Title("Жалоба губернатора")
 public class WldMind0020 extends Base {
 
@@ -30,14 +33,5 @@ public class WldMind0020 extends Base {
      */
     public List<Country> task(@NonNull Collection<Country> countries) {
         throw new UnsupportedOperationException("Реализуйте метод");
-    }
-
-    @Test
-    void runTask() {
-        IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit WldMind0020");
-
-        Collection<Country> countries = countries();
-
-        task(countries).stream().limit(20).forEach(IO::println);
     }
 }

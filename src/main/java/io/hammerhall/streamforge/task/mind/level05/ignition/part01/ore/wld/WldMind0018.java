@@ -3,8 +3,12 @@ package io.hammerhall.streamforge.task.mind.level05.ignition.part01.ore.wld;
 import io.hammerhall.streamforge.task.Base;
 import io.hammerhall.streamforge.task.Title;
 import java.util.List;
-import org.junit.jupiter.api.Test;
 
+/**
+ * Проверить решение: {@code ./hammerhall submit WldMind0018}. Посмотреть результат — добавьте {@code void main()} и
+ * вызовите {@code task(…)}; данные {@code Base} здесь не нужны: вход — три числа: начальное население, прирост и
+ * предел.
+ */
 @Title("Записки демографа")
 public class WldMind0018 extends Base {
 
@@ -34,16 +38,5 @@ public class WldMind0018 extends Base {
      */
     public List<Long> task(long startPopulation, double growthRate, long maxPopulation) {
         throw new UnsupportedOperationException("Реализуйте метод");
-    }
-
-    @Test
-    void runTask() {
-        IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit WldMind0018");
-
-        long startPopulation = 1_000_000L;
-        double growthRate = 5.0;
-        long maxPopulation = 2_000_000L;
-
-        task(startPopulation, growthRate, maxPopulation).stream().limit(20).forEach(IO::println);
     }
 }

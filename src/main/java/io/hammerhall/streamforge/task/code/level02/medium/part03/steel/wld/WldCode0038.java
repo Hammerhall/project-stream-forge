@@ -7,8 +7,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import lombok.NonNull;
-import org.junit.jupiter.api.Test;
 
+/**
+ * Проверить решение: {@code ./hammerhall submit WldCode0038}. Посмотреть результат на открытых данных — добавьте
+ * {@code void main()} и вызовите {@code task(…)}; данные даёт {@code Base} (здесь — {@code countries()}).
+ */
 @Title("Региональные саммиты")
 public class WldCode0038 extends Base {
 
@@ -29,14 +32,5 @@ public class WldCode0038 extends Base {
      */
     public Map<String, List<Country>> task(@NonNull Collection<Country> countries) {
         throw new UnsupportedOperationException("Реализуйте метод");
-    }
-
-    @Test
-    void runTask() {
-        IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit WldCode0038");
-
-        Collection<Country> countries = countries();
-
-        task(countries).entrySet().stream().limit(20).forEach(IO::println);
     }
 }

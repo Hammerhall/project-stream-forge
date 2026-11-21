@@ -6,8 +6,11 @@ import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import java.util.NoSuchElementException;
 import lombok.NonNull;
-import org.junit.jupiter.api.Test;
 
+/**
+ * Проверить решение: {@code ./hammerhall submit WldMind0022}. Посмотреть результат на открытых данных — добавьте
+ * {@code void main()} и вызовите {@code task(…)}; данные даёт {@code Base} (здесь — {@code countries()}).
+ */
 @Title("Экспедиция картографа")
 public class WldMind0022 extends Base {
 
@@ -25,14 +28,5 @@ public class WldMind0022 extends Base {
      */
     public String task(@NonNull Collection<Country> countries) {
         throw new UnsupportedOperationException("Реализуйте метод");
-    }
-
-    @Test
-    void runTask() {
-        IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit WldMind0022");
-
-        Collection<Country> countries = countries();
-
-        IO.println(task(countries));
     }
 }
