@@ -7,6 +7,10 @@ import java.util.Collection;
 import java.util.List;
 import lombok.NonNull;
 
+/**
+ * Проверить решение: {@code ./hammerhall submit MovCode0001}. Посмотреть результат на открытых данных — добавьте
+ * {@code void main()} и вызовите {@code task(…)}; данные даёт {@code Base} (здесь — {@code movies()}).
+ */
 @Title("Программка для зрителей")
 public class MovCode0001 extends Base {
 
@@ -22,10 +26,5 @@ public class MovCode0001 extends Base {
      */
     public List<String> task(@NonNull Collection<Movie> movies) {
         throw new UnsupportedOperationException("Реализуйте метод");
-    }
-
-    void main() {
-        IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit MovCode0001");
-        task(movies()).stream().limit(20).forEach(IO::println);
     }
 }

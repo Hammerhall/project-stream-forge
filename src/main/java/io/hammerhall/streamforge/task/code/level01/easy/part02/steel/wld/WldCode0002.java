@@ -7,6 +7,10 @@ import java.util.Collection;
 import java.util.Set;
 import lombok.NonNull;
 
+/**
+ * Проверить решение: {@code ./hammerhall submit WldCode0002}. Посмотреть результат на открытых данных — добавьте
+ * {@code void main()} и вызовите {@code task(…)}; данные даёт {@code Base} (здесь — {@code countries()}).
+ */
 @Title("Атлас для первоклассника")
 public class WldCode0002 extends Base {
 
@@ -21,10 +25,5 @@ public class WldCode0002 extends Base {
      */
     public Set<String> task(@NonNull Collection<Country> countries) {
         throw new UnsupportedOperationException("Реализуйте метод");
-    }
-
-    void main() {
-        IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit WldCode0002");
-        task(countries()).stream().limit(20).forEach(IO::println);
     }
 }

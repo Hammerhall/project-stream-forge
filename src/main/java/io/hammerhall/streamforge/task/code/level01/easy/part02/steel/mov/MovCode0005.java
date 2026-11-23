@@ -7,6 +7,10 @@ import java.util.Collection;
 import java.util.Optional;
 import lombok.NonNull;
 
+/**
+ * Проверить решение: {@code ./hammerhall submit MovCode0005}. Посмотреть результат на открытых данных — добавьте
+ * {@code void main()} и вызовите {@code task(…)}; данные даёт {@code Base} (здесь — {@code movies()}).
+ */
 @Title("Долгожданная премьера")
 public class MovCode0005 extends Base {
 
@@ -24,10 +28,5 @@ public class MovCode0005 extends Base {
      */
     public Optional<Movie> task(@NonNull Collection<Movie> movies, int targetYear) {
         throw new UnsupportedOperationException("Реализуйте метод");
-    }
-
-    void main() {
-        IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit MovCode0005");
-        task(movies(), 2000).ifPresentOrElse(IO::println, () -> IO.println("Фильм не найден"));
     }
 }

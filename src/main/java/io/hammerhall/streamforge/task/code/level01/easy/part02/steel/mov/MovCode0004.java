@@ -6,6 +6,10 @@ import io.hammerhall.streamforge.task.Title;
 import java.util.Collection;
 import lombok.NonNull;
 
+/**
+ * Проверить решение: {@code ./hammerhall submit MovCode0004}. Посмотреть результат на открытых данных — добавьте
+ * {@code void main()} и вызовите {@code task(…)}; данные даёт {@code Base} (здесь — {@code movies()}).
+ */
 @Title("Календарь киномеханика")
 public class MovCode0004 extends Base {
 
@@ -22,10 +26,5 @@ public class MovCode0004 extends Base {
      */
     public long task(@NonNull Collection<Movie> movies) {
         throw new UnsupportedOperationException("Реализуйте метод");
-    }
-
-    void main() {
-        IO.println("Это вывод, а не проверка. Проверить решение: ./hammerhall submit MovCode0004");
-        IO.println(task(movies()));
     }
 }
