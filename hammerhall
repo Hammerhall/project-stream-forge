@@ -21,6 +21,13 @@
 #  считает, что клиент уже скачан, и человек навсегда остаётся со
 #  старым. Ровно на это мы потеряли час 24.07.
 #
+#  ── Сумма — до первого запуска (с 0.2.0) ────────────────────
+#  Рядом с jar в релизе лежит cli-<версия>.jar.sha256 — одна строка
+#  формата sha256sum. Скачанное сверяется с ней ДО того, как jar
+#  получит своё имя: не сошлось — файл удаляется, клиент не
+#  запускается. Подменённый или недокачанный jar так и не станет
+#  «уже скачанным». Контракт — README клиента, «Обёртка — контракт».
+#
 #  `hammerhall update` — принудительно перекачать. Нужен, когда
 #  скачанный файл побился или когда версию всё-таки перевыложили.
 #  Живёт в обёртке, а не в клиенте, по двум причинам: версию знает
@@ -29,8 +36,8 @@
 # ============================================================
 set -euo pipefail
 
-VERSION="0.1.4"
-REPO="hammerhall/hammerhall-cli"
+VERSION="0.2.0"
+REPO="Hammerhall/hammerhall-cli"
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DIR="$ROOT/.hammerhall"
@@ -42,6 +49,31 @@ if ! command -v java > /dev/null 2>&1; then
     exit 1
 fi
 
+# Скачать $1 в файл $2 (или в стандартный вывод, если $2 — «-»).
+fetch() {
+    if command -v curl > /dev/null 2>&1; then
+        curl -fsSL -o "$2" "$1"
+    elif command -v wget > /dev/null 2>&1; then
+        wget -q -O "$2" "$1"
+    else
+        echo "Нужен curl или wget." >&2
+        return 2
+    fi
+}
+
+# Сумма файла — чем найдётся: Linux и Git Bash, macOS, остальное.
+sha256_of() {
+    if command -v sha256sum > /dev/null 2>&1; then
+        sha256sum "$1" | cut -c1-64
+    elif command -v shasum > /dev/null 2>&1; then
+        shasum -a 256 "$1" | cut -c1-64
+    elif command -v openssl > /dev/null 2>&1; then
+        openssl dgst -sha256 -r "$1" | cut -c1-64
+    else
+        return 1
+    fi
+}
+
 download() {
     echo "Загружаю клиент $VERSION…" >&2
     mkdir -p "$DIR"
@@ -50,12 +82,29 @@ download() {
     # останется мусор с временным именем, а не битый jar под правильным.
     # Иначе следующий запуск решил бы, что клиент уже скачан.
     TMP="$JAR.part"
-    if command -v curl > /dev/null 2>&1; then
-        curl -fsSL -o "$TMP" "$URL"
-    elif command -v wget > /dev/null 2>&1; then
-        wget -q -O "$TMP" "$URL"
-    else
-        echo "Нужен curl или wget." >&2
+    if ! fetch "$URL" "$TMP"; then
+        rm -f "$TMP"
+        echo "Не удалось скачать клиент — проверьте связь: $URL" >&2
+        exit 1
+    fi
+
+    local want got
+    if ! want="$(fetch "$URL.sha256" - | head -c 64 | tr 'A-F' 'a-f')"; then
+        rm -f "$TMP"
+        echo "Не удалось скачать сумму клиента — проверьте связь: $URL.sha256" >&2
+        exit 1
+    fi
+    if ! got="$(sha256_of "$TMP")"; then
+        rm -f "$TMP"
+        echo "Нечем проверить сумму скачанного клиента: нужен sha256sum, shasum или openssl." >&2
+        exit 1
+    fi
+    if [[ ! "$want" =~ ^[0-9a-f]{64}$ || "$got" != "$want" ]]; then
+        rm -f "$TMP"
+        echo "Скачанный клиент не совпал с опубликованной суммой — файл удалён, запускать не буду." >&2
+        echo "  ждали:    ${want:-пусто}" >&2
+        echo "  получили: $got" >&2
+        echo "Повторите позже. Не проходит — напишите нам: это может быть подмена по дороге." >&2
         exit 1
     fi
     mv "$TMP" "$JAR"
